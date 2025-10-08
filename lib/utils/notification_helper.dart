@@ -18,7 +18,12 @@ class NotificationHelper {
     );
     await notification.initialize(initializationSettings);
 
-
+    if(Platform.isAndroid){
+      await notification.resolvePlatformSpecificImplementation <AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
+    }else{
+      await notification.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()?.requestPermissions();
+    }
 
   }
 
