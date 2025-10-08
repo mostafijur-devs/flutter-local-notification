@@ -12,10 +12,21 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: ElevatedButton(onPressed: () {
-          NotificationHelper.showNotification();
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {
+              NotificationHelper.show();
 
-        }, child: Text('Show Notification')),
+            }, child: Text('Show Notification')),
+            ElevatedButton(onPressed: () {
+              NotificationHelper.scheduled();
+            }, child: Text('Show scheduled Notification')),
+            ElevatedButton(onPressed: () {
+              NotificationHelper.periodically();
+            }, child: Text('Show scheduled Notification')),
+          ],
+        ),
       ),
     );
   }
